@@ -275,7 +275,7 @@ class _ModernCalculatorContentState extends ConsumerState<ModernCalculatorConten
   void _checkForNiceResults(String result) {
     // Vis "Nice!" toast for specifikke resultater som er del af opgaven
     if (result == '69' || result == '80085') {
-      ToastService.showNiceToast(context);
+      ToastService.showNiceToast();
     }
   }
 

@@ -20,12 +20,7 @@ class _ModernMenuViewState extends ConsumerState<ModernMenuView> {
     super.initState();
     // Vis velkomst toast når app starter fra helt slukket
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ToastService.showToast(
-        context,
-        'Velkommen!',
-        type: ToastType.success,
-        icon: Icons.waving_hand,
-      );
+      ToastService.showWelcomeToast();
     });
   }
 

@@ -20,17 +20,14 @@ class CalculatorService {
   }
 
   String formatResult(double result) {
-   
-    if (result == 69 || result == 80085) {
-      return 'Nice!';
-    }
+
     
-    
+    // hvis vi laver resultat er fx sådan noget som 5.0 så viser vi 5
     if (result == result.roundToDouble()) {
       return result.round().toString();
     }
     
-    // Ellers vis med passende antal decimaler
+    // ellers vis med passende antal decimaler
     return result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 6)
         .replaceAll(RegExp(r'\.?0+$'), '');
   }
@@ -39,6 +36,7 @@ class CalculatorService {
     return double.tryParse(input) != null;
   }
 
+  // hvis resultat er bare 9 så returner vi 9 hvis andet ikke vælges, ellers anvendes 
   String buildExpression(String firstNumber, enums.Operation? operation, String secondNumber) {
     if (operation == null) return firstNumber;
     

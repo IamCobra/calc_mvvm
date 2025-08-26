@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../models/calculation.dart';
 import '../models/calculator_enums.dart' as enums;
 import '../services/calculator_service.dart';
 
@@ -198,10 +197,10 @@ class CalculatorViewModel extends StateNotifier<CalculatorViewState> {
     }
   }
 
+  // reset hvis der fejl
   void calculate() {
     if (state.hasError) {
       _resetToInitial();
-      return;
     }
 
     if (state.firstNumber.isEmpty || 
@@ -255,33 +254,8 @@ class CalculatorViewModel extends StateNotifier<CalculatorViewState> {
   }
 
   void clearEntry() {
-    switch (state.currentState) {
-      case enums.CalculatorState.enteringFirstNumber:
-        state = state.copyWith(
-          display: '0',
-          firstNumber: '',
-          currentState: enums.CalculatorState.initial,
-          expression: '',
-        );
-        break;
-      
-      case enums.CalculatorState.enteringSecondNumber:
-        state = state.copyWith(
-          display: '0',
-          secondNumber: '',
-          currentState: enums.CalculatorState.operationSelected,
-          expression: _calculatorService.buildExpression(
-            state.firstNumber, 
-            state.selectedOperation, 
-            ''
-          ),
-        );
-        break;
-      
-      default:
-        clear();
-        break;
-    }
+    // Implementer det senere - backspace funktionalitet
+    clear();
   }
 
   void clearHistory() {
